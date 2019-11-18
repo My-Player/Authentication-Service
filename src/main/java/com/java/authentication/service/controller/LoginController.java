@@ -1,6 +1,6 @@
 package com.java.authentication.service.controller;
 
-import com.java.authentication.service.dto.UserDTO;
+import com.java.authentication.service.dto.UserLogin;
 import com.java.authentication.service.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 @RequestMapping("/v1")
 public class LoginController {
@@ -19,8 +21,9 @@ public class LoginController {
     LoginService loginService;
 
     @PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> login(@RequestBody UserDTO userDTO){
-        return new ResponseEntity<>(loginService.loginUser(userDTO), HttpStatus.OK);
+    public ResponseEntity<?> login(@RequestBody UserLogin userLogin, HttpServletResponse response) throws Exception {
+        loginService.loginUser(userLogin,response);
+        return new ResponseEntity<>(userLogin, HttpStatus.OK);
     }
 
 }
