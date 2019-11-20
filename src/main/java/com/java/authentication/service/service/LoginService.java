@@ -9,4 +9,5 @@ import javax.servlet.http.HttpServletResponse;
 @Service
 public interface LoginService {
     LoginResponse loginUser(UserLoginDTO userLoginDTO, HttpServletResponse response) throws Exception;
+
 }
