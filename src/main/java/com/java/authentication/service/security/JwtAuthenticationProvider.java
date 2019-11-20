@@ -2,7 +2,7 @@ package com.java.authentication.service.security;
 
 import com.java.authentication.service.domain.UserData;
 import com.java.authentication.service.dto.JwtUserDetails;
-import com.java.authentication.service.dto.UserLogin;
+import com.java.authentication.service.dto.UserLoginDTO;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
@@ -28,12 +28,12 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
         JwtAuthenticationToken jwtToken = (JwtAuthenticationToken) usernamePasswordAuthenticationToken;
         String token = jwtToken.getToken();
 
-        UserLogin userLogin = validator.validate(token);
-        if(userLogin == null){throw new RuntimeException("Incorrect JWT Token");}
+        UserLoginDTO userLoginDTO = validator.validate(token);
+        if(userLoginDTO == null){throw new RuntimeException("Incorrect JWT Token");}
 
         UserData userData = new UserData();
-        userData.setUserEmail(userLogin.getEmail());
-        userData.setPassword(userLogin.getPassword());
+        userData.setUserEmail(userLoginDTO.getEmail());
+        userData.setPassword(userLoginDTO.getPassword());
 
         return new JwtUserDetails(userData);
     }

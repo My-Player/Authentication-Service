@@ -4,11 +4,10 @@ import com.java.authentication.service.dao.UserRepository;
 import com.java.authentication.service.domain.UserData;
 import com.java.authentication.service.dto.ErrorResponse;
 import com.java.authentication.service.dto.LoginResponse;
-import com.java.authentication.service.dto.UserLogin;
+import com.java.authentication.service.dto.UserLoginDTO;
 import com.java.authentication.service.security.JwtAuthenticationToken;
 import com.java.authentication.service.security.JwtGenerator;
 import com.java.authentication.service.service.LoginService;
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,18 +37,20 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public LoginResponse loginUser(UserLogin userLogin, HttpServletResponse response) throws IOException {
-        userDetailService.loadUserByUsername(userLogin.getEmail());
-        UserData userData = userRepository.findUserByUserEmail(userLogin.getEmail());
-        String password = userLogin.getPassword();
+    public LoginResponse loginUser(UserLoginDTO userLoginDTO, HttpServletResponse response) throws IOException {
+        userDetailService.loadUserByUsername(userLoginDTO.getEmail());
+        UserData userData = userRepository.findUserByUserEmail(userLoginDTO.getEmail());
+        String password = userLoginDTO.getPassword();
 
         if(!passwordEncoder.matches(password, userData.getPassword())) {
-            return new LoginResponse(500,FAILED.getMessage(),"");
+           ErrorResponse errorResponse = new ErrorResponse("Incorrect Password!");
+            response.sendError(401,errorResponse.getMessage());
+            return new LoginResponse(response.getStatus(),errorResponse.getMessage(),"");
         }
 
-        userLogin.setEmail(userData.getUserEmail());
-        JwtAuthenticationToken token = new JwtAuthenticationToken(jwtGenerator.generate(userLogin));
-        token.setToken(jwtGenerator.generate(userLogin));
+        userLoginDTO.setEmail(userData.getUserEmail());
+        JwtAuthenticationToken token = new JwtAuthenticationToken(jwtGenerator.generate(userLoginDTO));
+        token.setToken(jwtGenerator.generate(userLoginDTO));
 
         String payload = token.getToken().split("\\.")[1];
         return new LoginResponse(200,SUCCESS.getMessage(),payload);

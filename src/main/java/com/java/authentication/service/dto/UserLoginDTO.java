@@ -1,6 +1,6 @@
 package com.java.authentication.service.dto;
 
-public class UserLogin {
+public class UserLoginDTO {
     private String email;
     private String password;
 
