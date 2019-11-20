@@ -1,6 +1,7 @@
 package com.java.authentication.service.domain;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,8 +13,13 @@ import java.util.Objects;
 @DynamicUpdate
 public class UserData implements Serializable {
 
-    @Column(name = "user_id")
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "user_id")
     private String userId;
 
     @Column
