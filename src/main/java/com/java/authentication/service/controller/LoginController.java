@@ -29,7 +29,7 @@ public class LoginController {
     @PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> login(@RequestBody UserLoginDTO userLoginDTO, HttpServletResponse response) throws Exception {
             LoginResponse loginResponse = loginService.loginUser(userLoginDTO, response);
-            return new ResponseEntity<>(loginResponse, HttpStatus.CREATED);
+            return new ResponseEntity<>(loginResponse, HttpStatus.OK);
     }
 
 }

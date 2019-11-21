@@ -53,6 +53,6 @@ public class LoginServiceImpl implements LoginService {
         token.setToken(jwtGenerator.generate(userLoginDTO));
 
         String payload = token.getToken().split("\\.")[1];
-        return new LoginResponse(201,SUCCESS.getMessage(),payload);
+        return new LoginResponse(200,SUCCESS.getMessage(),payload);
     }
 }
