@@ -49,8 +49,6 @@ public class LoginControllerTest {
 
     LoginResponse loginResponse;
 
-    ErrorResponse errorResponse;
-
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
