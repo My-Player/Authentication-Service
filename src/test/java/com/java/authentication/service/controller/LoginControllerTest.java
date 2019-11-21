@@ -1,7 +1,6 @@
-package com.java.authentication.service;
+package com.java.authentication.service.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.java.authentication.service.controller.LoginController;
 import com.java.authentication.service.dto.ErrorResponse;
 import com.java.authentication.service.dto.LoginResponse;
 import com.java.authentication.service.dto.UserLoginDTO;
@@ -24,7 +23,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import javax.servlet.http.HttpServletResponse;
 
-import static com.java.authentication.service.constant.StatusConstant.FAILED;
 import static com.java.authentication.service.constant.StatusConstant.SUCCESS;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;

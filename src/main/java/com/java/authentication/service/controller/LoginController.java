@@ -28,12 +28,8 @@ public class LoginController {
 
     @PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> login(@RequestBody UserLoginDTO userLoginDTO, HttpServletResponse response) throws Exception {
-        try {
             LoginResponse loginResponse = loginService.loginUser(userLoginDTO, response);
             return new ResponseEntity<>(loginResponse, HttpStatus.CREATED);
-        }catch(Exception e){
-            return new ResponseEntity<>(new ErrorResponse(e.getMessage()),HttpStatus.BAD_REQUEST);
-        }
     }
 
 }
