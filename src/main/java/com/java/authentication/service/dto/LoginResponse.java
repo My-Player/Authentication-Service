@@ -5,6 +5,8 @@ public class LoginResponse {
     private String message;
     private String token;
 
+
+
     public LoginResponse(int code, String message, String token) {
         this.code = code;
         this.message = message;

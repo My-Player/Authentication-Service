@@ -19,17 +19,17 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/v1")
 public class LoginController {
 
+    final LoginService loginService;
+
     @Autowired
-    LoginService loginService;
+    public LoginController(LoginService loginService){
+        this.loginService = loginService;
+    }
 
     @PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> login(@RequestBody UserLoginDTO userLoginDTO, HttpServletResponse response) throws Exception {
-        try {
             LoginResponse loginResponse = loginService.loginUser(userLoginDTO, response);
-            return new ResponseEntity<>(loginResponse, HttpStatus.OK);
-        }catch(Exception e){
-            return new ResponseEntity<>(new ErrorResponse(e.getMessage()),HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+            return new ResponseEntity<>(loginResponse, HttpStatus.CREATED);
     }
 
 }

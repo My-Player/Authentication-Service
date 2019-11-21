@@ -20,20 +20,20 @@ import java.io.IOException;
 @Service
 public class LoginServiceImpl implements LoginService {
 
-    @Autowired
-    UserDetailService userDetailService;
+    final UserDetailService userDetailService;
 
-    @Autowired
-    UserRepository userRepository;
+    final UserRepository userRepository;
 
     PasswordEncoder passwordEncoder;
 
     JwtGenerator jwtGenerator;
 
     @Autowired
-    public LoginServiceImpl(PasswordEncoder passwordEncoder, JwtGenerator jwtGenerator) {
+    public LoginServiceImpl(PasswordEncoder passwordEncoder, JwtGenerator jwtGenerator, UserRepository userRepository, UserDetailService userDetailService) {
         this.passwordEncoder = passwordEncoder;
         this.jwtGenerator = jwtGenerator;
+        this.userRepository = userRepository;
+        this.userDetailService = userDetailService;
     }
 
     @Override
@@ -53,6 +53,6 @@ public class LoginServiceImpl implements LoginService {
         token.setToken(jwtGenerator.generate(userLoginDTO));
 
         String payload = token.getToken().split("\\.")[1];
-        return new LoginResponse(200,SUCCESS.getMessage(),payload);
+        return new LoginResponse(201,SUCCESS.getMessage(),payload);
     }
 }
