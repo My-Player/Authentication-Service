@@ -2,7 +2,7 @@ package com.java.authentication.service.service.impl;
 
 import com.java.authentication.service.dao.UserRepository;
 import com.java.authentication.service.domain.UserData;
-import com.java.authentication.service.dto.ErrorResponse;
+import com.java.authentication.service.dto.Response;
 import com.java.authentication.service.dto.LoginResponse;
 import com.java.authentication.service.dto.UserLoginDTO;
 import com.java.authentication.service.security.JwtAuthenticationToken;
@@ -43,7 +43,7 @@ public class LoginServiceImpl implements LoginService {
         String password = userLoginDTO.getPassword();
 
         if(!passwordEncoder.matches(password, userData.getPassword())) {
-           ErrorResponse errorResponse = new ErrorResponse("Incorrect Password!");
+           Response errorResponse = new Response("Incorrect Password!");
             response.sendError(401,errorResponse.getMessage());
             return new LoginResponse(response.getStatus(),errorResponse.getMessage(),"");
         }

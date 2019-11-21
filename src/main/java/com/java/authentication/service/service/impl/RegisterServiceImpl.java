@@ -2,7 +2,7 @@ package com.java.authentication.service.service.impl;
 
 import com.java.authentication.service.dao.UserRepository;
 import com.java.authentication.service.domain.UserData;
-import com.java.authentication.service.dto.ErrorResponse;
+import com.java.authentication.service.dto.Response;
 import com.java.authentication.service.dto.UserRegisterDto;
 import com.java.authentication.service.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +23,24 @@ public class RegisterServiceImpl implements RegisterService {
 
 
     @Override
-    public void registerUser(UserRegisterDto userRegisterDto) {
+    public Response registerUser(UserRegisterDto userRegisterDto) {
         UserData data = new UserData();
+        UserData findUser = userRepository.findUserByUserEmail(userRegisterDto.getEmail());
+        if(findUser == null) insertData(data,userRegisterDto);
+        if(findUser != null && findUser.getUserEmail().equals(userRegisterDto.getEmail())) return new Response("This Email has Already been Exists!");
+
+        return new Response("success");
+    }
+
+
+
+    private void insertData(UserData data, UserRegisterDto userRegisterDto){
         data.setUserEmail(userRegisterDto.getEmail());
         data.setPassword(passwordEncoder.encode(userRegisterDto.getPassword()));
         data.setGender(userRegisterDto.getGender());
         data.setDob(userRegisterDto.getDob());
         data.setUserProvince(userRegisterDto.getProvince());
         data.setUserCity(userRegisterDto.getCity());
-
-        try {
-            userRepository.save(data);
-        }catch(Exception e){
-            new ErrorResponse(e.getMessage());
-        }
+        userRepository.save(data);
     }
 }
