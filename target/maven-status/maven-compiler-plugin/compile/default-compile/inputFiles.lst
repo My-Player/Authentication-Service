@@ -1,6 +1,5 @@
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\controller\RegisterController.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\security\JwtAuthenticationProvider.java
-C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\dto\ErrorResponse.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\security\JwtAuthenticationTokenFilter.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\config\AuthorizationConfig.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\dto\JwtUserDetails.java
@@ -10,6 +9,7 @@ C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\ja
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\security\JwtAuthenticationToken.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\dao\UserRepository.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\AuthenticationServiceApplication.java
+C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\dao\OtpRepository.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\controller\LoginController.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\service\RegisterService.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\dto\UserLoginDTO.java
@@ -19,8 +19,9 @@ C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\ja
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\security\JwtAuthenticationEntryPoint.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\dto\LoginResponse.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\service\impl\RegisterServiceImpl.java
+C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\dto\Response.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\domain\UserData.java
+C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\domain\Otp.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\security\JwtGenerator.java
-C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\domain\Club.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\security\JwtSuccessHandler.java
 C:\Users\made.saputra38\IdeaProjects\authentication-service\src\main\java\com\java\authentication\service\security\JwtValidator.java

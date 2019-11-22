@@ -1,6 +1,5 @@
 package com.java.authentication.service.controller;
 
-import com.java.authentication.service.dto.ErrorResponse;
 import com.java.authentication.service.dto.LoginResponse;
 import com.java.authentication.service.dto.UserLoginDTO;
 import com.java.authentication.service.service.LoginService;
