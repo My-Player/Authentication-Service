@@ -2,7 +2,7 @@ package com.java.authentication.service.service.impl;
 
 import com.java.authentication.service.dao.UserRepository;
 import com.java.authentication.service.domain.UserData;
-import com.java.authentication.service.dto.Response;
+import com.java.authentication.service.dto.MessageResponse;
 import com.java.authentication.service.dto.UserRegisterDto;
 import com.java.authentication.service.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +23,13 @@ public class RegisterServiceImpl implements RegisterService {
 
 
     @Override
-    public Response registerUser(UserRegisterDto userRegisterDto) {
+    public MessageResponse registerUser(UserRegisterDto userRegisterDto) {
         UserData data = new UserData();
         UserData findUser = userRepository.findUserByUserEmail(userRegisterDto.getEmail());
         if(findUser == null) insertData(data,userRegisterDto);
-        if(findUser != null && findUser.getUserEmail().equals(userRegisterDto.getEmail())) return new Response("This Email has Already Taken!");
+        if(findUser != null && findUser.getUserEmail().equals(userRegisterDto.getEmail())) return new MessageResponse("This Email has Already Taken!");
 
-        return new Response("success");
+        return new MessageResponse("success");
     }
 
 

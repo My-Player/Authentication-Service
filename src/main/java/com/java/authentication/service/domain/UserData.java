@@ -1,7 +1,9 @@
 package com.java.authentication.service.domain;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -39,6 +41,16 @@ public class UserData implements Serializable {
 
     @Column(name = "USER_DOB")
     private Date dob;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "CREATED_AT")
+    private Date createdAt;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "LAST_MODIFIED")
+    private Date lastModified;
 
     public UserData() {
     }
@@ -98,6 +110,22 @@ public class UserData implements Serializable {
 
     public void setDob(Date dob) {
         this.dob = dob;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(Date lastModified) {
+        this.lastModified = lastModified;
     }
 
     @Override

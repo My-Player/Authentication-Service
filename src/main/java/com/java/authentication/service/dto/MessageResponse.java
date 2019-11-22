@@ -1,9 +1,9 @@
 package com.java.authentication.service.dto;
 
-public class Response {
+public class MessageResponse {
     private String message;
 
-    public Response(String message) {
+    public MessageResponse(String message) {
         this.message = message;
     }
 

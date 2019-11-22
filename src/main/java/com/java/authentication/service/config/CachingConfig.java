@@ -23,7 +23,7 @@ public class CachingConfig {
         return cacheManager;
     }
 
-    @Scheduled(initialDelay = 0, fixedRate = 60000)
+    @Scheduled(initialDelay = 0, fixedRate = 120000)
     public void evictCache(){cacheManager.getCache("otp").clear();}
 
 }
