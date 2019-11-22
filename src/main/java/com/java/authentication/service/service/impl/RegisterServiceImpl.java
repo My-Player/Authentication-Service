@@ -27,7 +27,7 @@ public class RegisterServiceImpl implements RegisterService {
         UserData data = new UserData();
         UserData findUser = userRepository.findUserByUserEmail(userRegisterDto.getEmail());
         if(findUser == null) insertData(data,userRegisterDto);
-        if(findUser != null && findUser.getUserEmail().equals(userRegisterDto.getEmail())) return new Response("This Email has Already been Exists!");
+        if(findUser != null && findUser.getUserEmail().equals(userRegisterDto.getEmail())) return new Response("This Email has Already Taken!");
 
         return new Response("success");
     }
