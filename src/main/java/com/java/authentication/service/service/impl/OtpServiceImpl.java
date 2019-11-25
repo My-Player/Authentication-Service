@@ -9,6 +9,7 @@ import java.util.Random;
 
 @Service
 public class OtpServiceImpl implements OtpService {
+
     @Override
     @Cacheable(cacheNames = "otp")
     public OtpDto generateOtp() {
