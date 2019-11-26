@@ -8,41 +8,10 @@ import java.util.Collection;
 
 public class JwtUserDetails implements UserDetails {
 
-    private String userEmail;
-    private String token;
-    private Integer id;
-    private Collection<? extends  GrantedAuthority> authorities;
+    private UserData userData;
 
-    public JwtUserDetails(final UserData userData) {
-        super();
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
-        this.authorities = authorities;
+    public JwtUserDetails(UserData userData){
+        this.userData = userData;
     }
 
     @Override
@@ -52,17 +21,17 @@ public class JwtUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return this.userData.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return this.userData.getUserEmail();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
