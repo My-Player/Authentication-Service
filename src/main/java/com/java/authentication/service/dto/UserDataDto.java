@@ -2,13 +2,14 @@ package com.java.authentication.service.dto;
 
 import java.util.Date;
 
-public class UserRegisterDto {
+public class UserDataDto {
     private String email;
     private String password;
     private String gender;
     private Date dob;
     private String province;
     private String city;
+    private String phone;
 
     public String getEmail() {
         return email;
@@ -56,5 +57,13 @@ public class UserRegisterDto {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

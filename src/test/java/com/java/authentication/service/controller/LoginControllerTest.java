@@ -1,9 +1,12 @@
 package com.java.authentication.service.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.java.authentication.service.dao.UserRepository;
 import com.java.authentication.service.dto.LoginResponse;
+import com.java.authentication.service.dto.MessageResponse;
 import com.java.authentication.service.dto.UserLoginDTO;
 import com.java.authentication.service.service.LoginService;
+import com.java.authentication.service.service.impl.UserDetailService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -67,5 +70,4 @@ public class LoginControllerTest {
         this.mockMvc.perform(post("/v1/login").contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(mapper.writeValueAsString(dto))).andExpect(status().isOk()).andDo(print());
     }
-
 }
