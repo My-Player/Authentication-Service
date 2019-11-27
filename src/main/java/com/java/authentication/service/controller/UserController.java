@@ -1,22 +1,16 @@
 package com.java.authentication.service.controller;
 
-import com.java.authentication.service.dto.UserDTO;
 import com.java.authentication.service.dto.UserDataDto;
 import com.java.authentication.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.ServletException;
-import java.io.IOException;
 
 @RestController
 @RequestMapping("/v1")
-public class GetUserDetailController {
+public class UserController {
 
     @Autowired
     UserService userService;
