@@ -36,6 +36,12 @@ public class UserData implements Serializable {
     @Column(name = "USER_CITY")
     private String userCity;
 
+    @Column(name = "userPhoto")
+    private String userPhoto;
+
+    @Column(name = "USER_PHONE")
+    private String userPhone;
+
     @Column(name = "USER_GENDER")
     private String gender;
 
@@ -54,7 +60,6 @@ public class UserData implements Serializable {
 
     public UserData() {
     }
-
 
     public String getUserId() {
         return userId;
@@ -94,6 +99,22 @@ public class UserData implements Serializable {
 
     public void setUserCity(String userCity) {
         this.userCity = userCity;
+    }
+
+    public String getUserPhoto() {
+        return userPhoto;
+    }
+
+    public void setUserPhoto(String userPhoto) {
+        this.userPhoto = userPhoto;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
     public String getGender() {
@@ -136,15 +157,19 @@ public class UserData implements Serializable {
         return userId.equals(userData.userId) &&
                 password.equals(userData.password) &&
                 userEmail.equals(userData.userEmail) &&
-                userProvince.equals(userData.userProvince) &&
-                userCity.equals(userData.userCity) &&
+                Objects.equals(userProvince, userData.userProvince) &&
+                Objects.equals(userCity, userData.userCity) &&
+                Objects.equals(userPhoto, userData.userPhoto) &&
+                Objects.equals(userPhone, userData.userPhone) &&
                 gender.equals(userData.gender) &&
-                dob.equals(userData.dob);
+                dob.equals(userData.dob) &&
+                createdAt.equals(userData.createdAt) &&
+                lastModified.equals(userData.lastModified);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, password, userEmail, userProvince, userCity, gender, dob);
+        return Objects.hash(userId, password, userEmail, userProvince, userCity, userPhoto, userPhone, gender, dob, createdAt, lastModified);
     }
 
     @Override
@@ -155,8 +180,12 @@ public class UserData implements Serializable {
                 ", userEmail='" + userEmail + '\'' +
                 ", userProvince='" + userProvince + '\'' +
                 ", userCity='" + userCity + '\'' +
+                ", userPhoto='" + userPhoto + '\'' +
+                ", userPhone='" + userPhone + '\'' +
                 ", gender='" + gender + '\'' +
                 ", dob=" + dob +
+                ", createdAt=" + createdAt +
+                ", lastModified=" + lastModified +
                 '}';
     }
 }
