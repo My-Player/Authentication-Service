@@ -2,12 +2,18 @@ package com.java.authentication.service.service.impl;
 
 import com.java.authentication.service.dao.UserRepository;
 import com.java.authentication.service.domain.UserData;
+import com.java.authentication.service.dto.LoginResponse;
 import com.java.authentication.service.dto.MessageResponse;
 import com.java.authentication.service.dto.UserDTO;
 import com.java.authentication.service.dto.UserDataDto;
 import com.java.authentication.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,6 +25,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    RestTemplate restTemplate;
 
 
     @Override
