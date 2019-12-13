@@ -28,11 +28,4 @@ public class LoginController {
             LoginResponse loginResponse = loginService.loginUser(userLoginDTO, response);
             return new ResponseEntity<>(loginResponse, HttpStatus.OK);
     }
-
-    @GetMapping("/getUsername")
-    @ResponseBody
-    public String getUsername(Authentication authentication){
-        return  authentication.getName();
-    }
-
 }
