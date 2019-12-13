@@ -19,7 +19,7 @@ public class OtpController {
     }
 
     @GetMapping(value = "/generateOtp")
-    public ResponseEntity<?> generateOtp(){
+    public ResponseEntity generateOtp(){
         OtpDto response = otpService.generateOtp();
         return new ResponseEntity(response, HttpStatus.OK);
     }
